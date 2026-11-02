@@ -1,0 +1,88 @@
+﻿<Window x:Class="skovbyprojekt.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:skovbyprojekt.Views"
+        mc:Ignorable="d"
+        Title="MultisportMixer" 
+        Height="650" Width="1000"
+        Background="#6495ED"
+        FontFamily="Arial"
+        FontWeight="Bold">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="RadioButton">
+                    <Setter Property = "Background" Value = "White" />
+                    <Setter Property = "FontSize" Value = "14" />
+                    <Setter Property = "FontFamily" Value = "Roboto" />
+                    <Setter Property = "Foreground" Value = "Black" />
+                    <Setter Property = "FontWeight" Value = "Bold" />
+                    <Setter Property = "Margin" Value = "0" />
+                    <Setter Property = "Command" Value = "{Binding UpdateViewCommand}" />
+                    <Setter Property = "GroupName" Value = "menu" />
+                    <Setter Property = "Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="RadioButton">
+                                <Border CornerRadius="0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="#FF374864"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Resources>
+            <RadioButton x:Name="HomePage" 
+                            CommandParameter="HomePage"                             
+                            Command="{Binding UpdateViewCommand}"                             
+                            Width="200" 
+                            Height="30">
+                <AccessText>_Generer Træningsplan</AccessText>
+            </RadioButton>
+
+            <RadioButton x:Name="CreateManualTrainingPlan"
+                            CommandParameter="CreateManualTrainingPlan"
+                            Command="{Binding UpdateViewCommand}"
+                            Width="200"
+                            Height="30">
+                <AccessText>_Opret Manuel Træningsplan</AccessText>
+            </RadioButton>
+
+            <RadioButton x:Name="ShowAllActivities"
+                            CommandParameter="ShowAllActivities"
+                            Command="{Binding UpdateViewCommand}"                             
+                            Width="200"
+                            Height="30">
+                <AccessText>_Se Alle Træningsaktiviteter</AccessText>
+            </RadioButton>
+
+            <RadioButton x:Name="CreateActivity" 
+                            CommandParameter="CreateActivity"                            
+                            Command="{Binding UpdateViewCommand}" 
+                            Width="200" 
+                            Height="30">
+                <AccessText>Opret _Træningsaktivitet</AccessText>
+            </RadioButton>
+
+            <RadioButton x:Name="CreateTeam"
+                            CommandParameter="CreateTeam"
+                            Command="{Binding UpdateViewCommand}"
+                            Width="200"
+                            Height="30">
+                <AccessText>Opret _Hold</AccessText>
+            </RadioButton>
+
+        </StackPanel>
+
+        <ContentControl Content="{Binding SelectedViewModel}"/>
+    </Grid>
+</Window>
+

@@ -1,0 +1,174 @@
+﻿<UserControl x:Class="skovbyprojekt.Views.CreateTrainingPlanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:skovbyprojekt.Views" xmlns:viewmodels="clr-namespace:skovbyprojekt.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:CreateTrainingPlanViewModel}"
+             mc:Ignorable="d" 
+             Height="490" 
+             Width="840"
+             Background="#6495ED"
+             FontFamily="Arial"
+             FontWeight="Bold">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+
+        <Label
+            x:Name="Headline"
+            Content="MultisportMixer"
+            Height="90"
+            Width="404"
+            Grid.Column="1"
+            Grid.Row="1"
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="3"
+            HorizontalAlignment="Left"
+            FontSize="52" Margin="202,15,0,0"
+            
+            />
+
+        <Button x:Name="___Generate_" Grid.Column="3" 
+                HorizontalAlignment="Left" 
+                Margin="10,0,0,0" 
+                Grid.Row="4" 
+                VerticalAlignment="Top" 
+                Height="60" 
+                Grid.RowSpan="2" 
+                Width="240" 
+                Grid.ColumnSpan="2" 
+                FontSize="20"
+                Background="#EDBB64" Click="___Generate__Click">
+            <AccessText>G_enerer Træningsplan</AccessText>
+        </Button>
+
+        <ComboBox Grid.Column="1"
+                  Width="150" 
+                  Height="25" 
+                  HorizontalAlignment="Left"
+                  Margin="150,15,0,25"
+                  Grid.Row="4"
+                  Grid.RowSpan="2"
+                  Grid.ColumnSpan="2"   
+                  
+                  ItemsSource="{Binding Teams}"></ComboBox>
+
+        <Label
+            x:Name="NewTrainingPlan"
+            Grid.RowSpan="2"
+            Content="Ny træningsplan"
+            FontSize="16"
+            HorizontalAlignment="Left"  
+            Grid.Row="6" 
+            VerticalAlignment="Top"
+            Grid.Column="1"
+            Grid.ColumnSpan="3" 
+            Height="40" 
+            Width="330" Margin="10,0,0,0"/>
+
+        <Label
+            x:Name="LastTrainingPlan"
+            Grid.RowSpan="2"
+            Content="Sidste uges træningsplan"
+            FontSize="16"
+            HorizontalAlignment="Left"  
+            Grid.Row="6" 
+            VerticalAlignment="Top"
+            Grid.Column="3" 
+            Height="40" 
+            Width="330" 
+            Margin="141,0,0,0"/>
+
+        <ListView Grid.Column="1" 
+                  Grid.Row="6" 
+                  d:ItemsSource="{d:SampleData ItemCount=5}" 
+                  Margin="15,31,0,0" 
+                  Grid.RowSpan="5" 
+                  Grid.ColumnSpan="2"
+                  Height="200"
+                  Width="300"
+                  x:Name="DisplayNew">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView Grid.Column="3" 
+                  Grid.Row="6" 
+                  d:ItemsSource="{d:SampleData ItemCount=5}" 
+                  Margin="141,31,59,0" 
+                  Grid.RowSpan="5"
+                  Height="200"
+                  Width="300"
+                  x:Name="DisplayPrevious">
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+        <Button 
+            Grid.Column="1" 
+            HorizontalAlignment="Center" 
+            Margin="0,23,0,-10" 
+            Grid.Row="11"
+            Width="100"
+            FontSize="16" 
+            Grid.ColumnSpan="2" 
+            Background="#EDBB64">
+            <AccessText>Se _detajler</AccessText>
+        </Button>
+
+        <Button 
+            Grid.Column="3" 
+            HorizontalAlignment="Left" 
+            Margin="141,19,0,20" 
+            Grid.Row="11"
+            Width="278"
+            FontSize="16" Grid.RowSpan="2" 
+            Background="#EDBB64">
+            <AccessText>_Vis tidligere træningsplaner</AccessText>
+        </Button>
+
+
+
+
+
+    </Grid>
+</UserControl>
